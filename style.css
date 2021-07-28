@@ -34,11 +34,65 @@ body{
 /* ******* */
 /* ******* */
 /* landing */
-
 #landing{
   background: black;
   min-height: 100vh;
 }
+
+/* *************** */
+/* landing_header */
+#landing_header{
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  padding-top: 96px;
+}
+/* header_options */
+.header_options{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: red;
+}
+.options_list{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  max-width: 480px;
+  height: inherit;
+}
+.options_list li{
+  flex: 1;
+  height: inherit;
+}
+.options_item,
+.options_link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+.options_link{
+  text-decoration: none;
+}
+.options_item-purple{
+  background-color: var(--purple);
+  color: #ffffff;
+}
+.options_item-lightCyan{
+  background-color: var(--lightCyan);
+  color: var(--font-grayishBlue);
+}
+.options_item:not(.options_item-purple) img{
+  margin-right: 9px;
+}
+/* *************** */
+
 
 /* *************** */
 /* landing_content */
