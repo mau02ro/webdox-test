@@ -1,0 +1,18 @@
+.affiliates_text {
+	text-align: center;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 30px;
+	color: #999999;
+
+	margin-top: 23px;
+}
+.affiliates_text span {
+	color: #3a4ef2;
+}
+@media screen and (max-width: 560px) {
+	.affiliates_text {
+		font-size: 16px;
+		line-height: 25px;
+	}
+}
