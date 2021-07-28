@@ -1,0 +1,44 @@
+:root {
+	--purple: #3a4ef2;
+	--lightCyan: #48ffff;
+
+	--font-gray: #c4c4c4;
+	--font-grayishBlue: #263238;
+}
+
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+}
+html {
+	box-sizing: border-box;
+}
+body {
+	font-family: "Poppins", sans-serif;
+	padding: 0;
+	margin: 0;
+}
+.wrapper {
+	margin: auto;
+	width: 80%;
+	max-width: 1022px;
+}
+
+@media screen and (max-width: 1024px) {
+	.wrapper {
+		max-width: 806px;
+	}
+}
+@media screen and (max-width: 768px) {
+	.wrapper {
+		max-width: 516px;
+	}
+}
+@media screen and (max-width: 560px) {
+	.wrapper {
+		max-width: initial;
+		width: 90%;
+	}
+}
