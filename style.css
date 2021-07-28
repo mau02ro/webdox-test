@@ -259,6 +259,24 @@ body{
   /* ******* */
 }
 
+@media screen and (max-width: 760px){
+  /* ******* */
+  /* ******* */
+  /* landing */
+
+  /* *************** */
+  /* landing_header */
+
+  /* header_logo */
+  .logo_text{
+    display: none;
+  }
+  /* *************** */
+
+  /* ******* */
+  /* ******* */
+}
+
 @media screen and (max-width: 560px){
   /* ******* */
   /* ******* */
@@ -277,6 +295,39 @@ body{
     padding-bottom: 70px;
     min-height: initial;
   }
+
+  /* *************** */
+  /* landing_header */
+  #landing_header{
+    background-color: var(--purple);
+    margin-bottom: 48px;
+    padding: 36px 0;
+    
+    position: initial;
+  }
+
+  .header_container{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: lawngreen;
+  }
+  /* header_options */
+  .header_options{
+    position: initial;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    /*TODO: Cambiar el color de fondo a negro*/
+    background-color: rgb(109, 50, 50);
+  }
+  /* *************** */
+
   /* *************** */
   /* landing_content */
   .content_title{
