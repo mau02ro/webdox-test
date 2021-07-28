@@ -1,0 +1,74 @@
+:root{
+  --purple: #3A4EF2;
+  --lightCyan: #48FFFF;
+
+  --font-gray: #C4C4C4;
+  --font-grayishBlue: #263238;
+}
+/* ****** */
+/* Format */
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+}
+html{
+  box-sizing: border-box;
+} 
+body{
+  font-family: 'Poppins', sans-serif;
+}
+/* Format */
+/* ****** */
+
+/* ******* */
+/* landing */
+#landing{
+  background: black;
+  height: 100vh;
+}
+
+/* landing_options */
+.landing_options{
+  background-color: #000000;
+  display: flex;
+  justify-content: flex-end;
+}
+.options_list{
+  display: flex;
+  align-items: center;
+
+  list-style: none;
+
+  width: 100%;
+  max-width: 480px;
+}
+.options_list li{
+  flex: 1;
+}
+.options_list a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+.options_item{
+  background-color: #000000;
+  color: var(--font-gray);
+}
+.options_item-purple{
+  background-color: var(--purple);
+  color: #ffffff;
+}
+.options_item-lightCyan{
+  background-color: var(--lightCyan);
+  color: var(--font-grayishBlue);
+}
+
+/* landing */
+/* ******* */
