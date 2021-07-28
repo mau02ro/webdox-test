@@ -1,0 +1,15 @@
+#landing {
+	background: #000000;
+	min-height: 100vh;
+}
+#affiliates {
+	background-color: #e5e5e5;
+	padding: 97px 0;
+}
+
+@media screen and (max-width: 560px) {
+	#landing {
+		padding-bottom: 70px;
+		min-height: initial;
+	}
+}

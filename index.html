@@ -6,43 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webdox - test</title>
 
-  <!-- ------------ -->
-  <!-- GOOGLE FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/globals.css">
+  <link rel="stylesheet" href="/landing-affiliates.css">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/affiliatesText/affiliatesText.css">
+  <link rel="stylesheet" href="/contentLanding/contentLanding.css">
+  <link rel="stylesheet" href="/header/header.css">
 </head>
 
 <body>
 
   <section id="landing">
-
-    <header id="landing_header">
+    <header id="landing_header" class="">
       <div class="wrapper header_wrapper">
         <picture class="header_logo">
           <img src="/assets/logo-w-webdox.png" alt="Webdox logo" class="logo_w">
           <img src="/assets/logo-text-webdox.png" alt="Webdox" class="logo_text">
         </picture>
-
+    
         <span class="header_openMenu" id="header_openMenu">
           <img src="/assets/icon-menu.png" alt="">
         </span>
-
+    
         <div class="header_container" id="header_container">
           <div class="header_containerClose">
             <img src="/assets/logo-w-webdox.png" alt="Webdox logo" class="logo_w">
-
             <span class="header_closeMenu" id="header_closeMenu">X</span>
           </div>
-
+    
           <ul class="header_menu" id="header_menu">
             <li><a href="#" class="menu_link">Producto</a></li>
             <li><a href="#" class="menu_link">Soluciones</a></li>
             <li><a href="#" class="menu_link">Recursos</a></li>
           </ul>
-
+    
           <div class="header_options">
             <ul class="options_list">
               <li>
@@ -51,7 +48,7 @@
               </li>
               <li>
                 <a href="#" class="options_item options_link options_item-purple">
-                  <img src="/assets/icon-key-purple.png" alt="">Ingresar</a>
+                  <img src="/assets/icon-key.png" alt="">Ingresar</a>
               </li>
               <li>
                 <a href="#" class="options_item options_link options_item-lightCyan">
@@ -68,17 +65,14 @@
         <h1 class="content_title">Súmate al futuro de los contratos</h1>
         <p class="content_text">Optimiza y centraliza la generación y gestión de tus contratos <span>en un
             ecosistema digital.</span></p>
-
+    
         <a href="#" class="content_btn">Agendar Demo</a>
       </div>
     </section>
-
   </section>
 
   <section id="affiliates">
     <div class="wrapper">
-      <div class="affiliates_slider" id="affiliates_slider"></div>
-
       <p class="affiliates_text">
         Descubre por qué <span>líderes de la Industria ya usan Webdox</span> para gestionar todos sus contratos
       </p>
@@ -86,12 +80,6 @@
   </section>
 
 
-  <script src="./header.js"></script>
+  <script src="/header/header.js"></script>
 </body>
 </html>
-
-<!--
-<section id="content">
-  <div class="wrapper landing_content">
-    <h1 class="content_title">Súmate al futuro de los contratos</h1>
-  </div>-->
