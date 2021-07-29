@@ -2,7 +2,7 @@ const slider = document.getElementById("affiliatesSlider");
 const slider_container = document.getElementById("affiliatesSlider_container");
 
 const CONFIG_SLIDER = {
-  num_show: 3,
+  num_show: 6,
   time: 2000,
   breakingPoints: [
     {
@@ -10,7 +10,7 @@ const CONFIG_SLIDER = {
       num_show: 4,
     },
     {
-      size: 480,
+      size: 425,
       num_show: 3,
     }
   ]
@@ -20,7 +20,7 @@ function Utilities(state){
   this.setWidth = () => {
     let items_slide = document.querySelectorAll(".slide");
     let width_slider = slider.getBoundingClientRect().width;
-    let width = width_slider / CONFIG_SLIDER.num_show;
+    let width = width_slider / state.num_show;
 
     state.jump_space = width;
 
@@ -32,7 +32,7 @@ function Utilities(state){
   this.cloneSlide = () => {
     let items_slide = document.querySelectorAll(".slide");
 
-    for (let i = 0; i < CONFIG_SLIDER.num_show; i++) {
+    for (let i = 0; i < state.num_show; i++) {
       let slide = items_slide[i];
       let clon_slide = slide.cloneNode(true);
       slider_container.appendChild(clon_slide);   
@@ -105,6 +105,7 @@ function ControllerSlider(){
     hop_counter: 0, // Hop counter
     jump_space: 0, // Jump space
     initNum_slide: slider_container.children.length, // Initial number of slide,
+    num_show: CONFIG_SLIDER.num_show
   }
 
   const Utility = new Utilities(state);
@@ -114,6 +115,7 @@ function ControllerSlider(){
   });
 
   this.start = () => {
+    this.responsive()
     Utility.cloneSlide();
     Interval.start();
   }
@@ -127,6 +129,8 @@ function ControllerSlider(){
   }
 
   this.reboot = () => {
+    this.responsive()
+
     Utility.setTransition(false);
 
     Utility.removeClones();
@@ -153,16 +157,34 @@ function ControllerSlider(){
     }
   }
 
+  this.responsive = () => {
+    let { width } = document.getElementsByTagName("body")[0].getBoundingClientRect();
+    let val = CONFIG_SLIDER.num_show;
+
+    if(width <= 560){
+      val = 3;
+    }else if(width <= 768){
+      val = 4;
+    }else if(width <= 1024){
+      val = 5;
+    }
+
+    state.num_show = val;
+  }
+
   this.test = () => {
     Utility.cloneSlide();
     Utility.removeClones();
   }
 }
 
-const AffiliatesSlider = new ControllerSlider();
-AffiliatesSlider.start();
+(() => {
+  const AffiliatesSlider = new ControllerSlider();
 
-
-window.addEventListener("resize", () => {
-  AffiliatesSlider.reboot()
-})
+  window.addEventListener("load", () => {
+    AffiliatesSlider.start();
+  })
+  window.addEventListener("resize", () => {
+    AffiliatesSlider.reboot(3);
+  })
+})()
