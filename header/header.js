@@ -8,6 +8,7 @@ function header_menuController(){
   if(!landing_header.classList.contains(CONTROLLER_CLASS)){
     landing_header.classList.add(CONTROLLER_CLASS);
     document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    document.getElementsByTagName("body")[0].style.position = "fixed";
   }else{
     landing_header.classList.add("close_menu");
     header_container.addEventListener("animationend", header_closeMenu)
@@ -20,6 +21,7 @@ function header_closeMenu(){
 
   header_container.removeEventListener("animationend", header_closeMenu);
   document.getElementsByTagName("body")[0].style.overflow = "initial";
+  document.getElementsByTagName("body")[0].style.position = "initial";
 }
 
 header_openMenu.addEventListener("click", header_menuController)
