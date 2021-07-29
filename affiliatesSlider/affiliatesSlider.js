@@ -1,22 +1,17 @@
 const slider = document.getElementById("affiliatesSlider");
 const slider_container = document.getElementById("affiliatesSlider_container");
 
+// Settings define slider behavior.
 const CONFIG_SLIDER = {
-  num_show: 6,
-  time: 3000,
-  breakingPoints: [
-    {
-      size: 768,
-      num_show: 4,
-    },
-    {
-      size: 425,
-      num_show: 3,
-    }
-  ]
+  num_show: 6, // Tndicates how many slides will be displayed.
+  time: 3000, // Slider speed(ms).
 }
 
+// ------------------------------------
+// Utilities to manipulate the slider.
 function Utilities(state){
+
+  // Set the width of each item on the slider.
   this.setWidth = () => {
     let items_slide = document.querySelectorAll(".slide");
     let width_slider = slider.getBoundingClientRect().width;
@@ -29,6 +24,13 @@ function Utilities(state){
     })
   }
 
+  /*
+  Due to the operation of the slider, we have to clone a number of items,
+  these functions respectively are in charge of handling this functionality.
+  
+    - cloneSlide: Clone the slides.
+    - removeClones: Remove cloned items.
+  */
   this.cloneSlide = () => {
     let items_slide = document.querySelectorAll(".slide");
 
@@ -49,6 +51,7 @@ function Utilities(state){
     }
   }
 
+  // Calculates slider skip or shift.
   this.calculateJump = () => {
     let position_slider = slider_container.getBoundingClientRect().x;  
     let offset_size = position_slider;
@@ -62,13 +65,15 @@ function Utilities(state){
     return position_slider - (offset_size + state.jump_space);
   }
 
+  // This method moves the slider.
   this.moveSlider = (jump) => {
     slider_container.style.transform = `translateX(${jump}px)`;
   }
 
+  // Set the speed of slider transitions.
   this.setTransition = (indicator) => {
     if(indicator){
-      slider_container.style.transition = "transform 2s";
+      slider_container.style.transition = `transform ${CONFIG_SLIDER.time/2}s`;
     }else{
       slider_container.style.transition = "transform 0s";
     }
