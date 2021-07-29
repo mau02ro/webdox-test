@@ -2,8 +2,18 @@ const slider = document.getElementById("affiliatesSlider");
 const slider_container = document.getElementById("affiliatesSlider_container");
 
 const CONFIG_SLIDER = {
-  num_show: 5,
-  time: 3000
+  num_show: 3,
+  time: 2000,
+  breakingPoints: [
+    {
+      size: 768,
+      num_show: 4,
+    },
+    {
+      size: 480,
+      num_show: 3,
+    }
+  ]
 }
 
 function Utilities(state){
@@ -29,6 +39,14 @@ function Utilities(state){
     }
 
     this.setWidth();
+  }
+
+  this.removeClones = () => {
+    let items_slide = document.querySelectorAll(".slide");
+
+    for (let i = state.initNum_slide; i < items_slide.length; i++) {
+      items_slide[i].parentNode.removeChild(items_slide[i]); 
+    }
   }
 
   this.calculateJump = () => {
@@ -103,22 +121,48 @@ function ControllerSlider(){
   this.reset = () => {
     state.hop_counter = 0;
     Utility.setTransition(false);
-    Utility.moveSlider(0);    
+    Utility.moveSlider(0);
+
+    slider_container.removeEventListener("transitionend", this.reset)
+  }
+
+  this.reboot = () => {
+    Utility.setTransition(false);
+
+    Utility.removeClones();
+
+    state.hop_counter = 0;
+    Utility.moveSlider(0);
+    
+    state.margin = slider_container.getBoundingClientRect().x;
+    Utility.cloneSlide(); 
+
+    Interval = Interval.reset();
   }
 
   this.controller = () => {
     Utility.setTransition(true);
 
-    state.hop_counter += 1;
-
     let jump = Utility.calculateJump();
     Utility.moveSlider(jump);
 
-    if(state.hop_counter > state.initNum_slide){
-      this.reset();
+    state.hop_counter += 1;
+
+    if(state.hop_counter == state.initNum_slide){
+      slider_container.addEventListener("transitionend", this.reset)
     }
+  }
+
+  this.test = () => {
+    Utility.cloneSlide();
+    Utility.removeClones();
   }
 }
 
 const AffiliatesSlider = new ControllerSlider();
 AffiliatesSlider.start();
+
+
+window.addEventListener("resize", () => {
+  AffiliatesSlider.reboot()
+})
