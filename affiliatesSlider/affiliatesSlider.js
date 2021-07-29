@@ -95,11 +95,9 @@ function ControllerSlider(){
     this.controller()
   });
 
-
-
   this.start = () => {
     Utility.cloneSlide();
-    Interval.start()
+    Interval.start();
   }
 
   this.reset = () => {
@@ -116,12 +114,11 @@ function ControllerSlider(){
     let jump = Utility.calculateJump();
     Utility.moveSlider(jump);
 
-    console.log('hop_counter: ', state.hop_counter);
-
     if(state.hop_counter > state.initNum_slide){
       this.reset();
     }
   }
 }
 
-const MY_SLIDER = new ControllerSlider()
+const AffiliatesSlider = new ControllerSlider();
+AffiliatesSlider.start();
