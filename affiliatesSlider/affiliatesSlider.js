@@ -3,7 +3,7 @@ const slider_container = document.getElementById("affiliatesSlider_container");
 
 const CONFIG_SLIDER = {
   num_show: 6,
-  time: 2000,
+  time: 3000,
   breakingPoints: [
     {
       size: 768,
@@ -68,7 +68,7 @@ function Utilities(state){
 
   this.setTransition = (indicator) => {
     if(indicator){
-      slider_container.style.transition = "transform 1s";
+      slider_container.style.transition = "transform 2s";
     }else{
       slider_container.style.transition = "transform 0s";
     }

@@ -42,7 +42,7 @@
 	width: max-content;
 	will-change: transform;
 	display: flex;
-	transition: transform 1s;
+	transition: transform 2s;
 }
 .slide {
 	position: relative;
