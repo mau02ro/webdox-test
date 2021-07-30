@@ -223,6 +223,9 @@
 		flex-flow: column;
 		max-width: initial;
 	}
+	.options_list * {
+		user-select: none;
+	}
 	.options_list > li {
 		flex: initial;
 		width: 80%;
@@ -245,7 +248,7 @@
 	}
 	/* Open Menu */
 	.open_menu {
-		background: rgb(255, 166, 0) !important;
+		background: rgb(0, 217, 255) !important;
 	}
 
 	.open_menu .logo_w {
