@@ -132,28 +132,31 @@ function ControllerSlider(){
     num_show: CONFIG_SLIDER.num_show, // Tndicates how many slides will be displayed.
   }
 
+  // Interval Driver Instances and Utility Driver Instances.
   const Utility = new Utilities(state);
-
   let Interval = new ControllerInterval(() => {
     this.controller()
   });
 
+  // Start the slider.
   this.start = () => {
     this.responsive()
     Utility.cloneSlide();
     Interval.start();
   }
 
+  // Reset the slider.
   this.reset = () => {
     state.hop_counter = 0;
     Utility.setTransition(false);
     Utility.moveSlider(0);
 
-    slider_container.removeEventListener("transitionend", this.reset)
+    slider_container.removeEventListener("transitionend", this.reset);
   }
 
+  // Reboot the slider.
   this.reboot = () => {
-    this.responsive()
+    this.responsive();
 
     Utility.setTransition(false);
 
@@ -168,6 +171,7 @@ function ControllerSlider(){
     Interval = Interval.reset();
   }
 
+  // Principal function.
   this.controller = () => {
     Utility.setTransition(true);
 
@@ -177,10 +181,12 @@ function ControllerSlider(){
     state.hop_counter += 1;
 
     if(state.hop_counter == state.initNum_slide){
-      slider_container.addEventListener("transitionend", this.reset)
+      // When the transaction finished, the restart function is executed.
+      slider_container.addEventListener("transitionend", this.reset);
     }
   }
 
+  // Indicates the number of slides to be displayed, it is used in the answer.
   this.responsive = () => {
     let { width } = document.getElementsByTagName("body")[0].getBoundingClientRect();
     let val = CONFIG_SLIDER.num_show;
@@ -195,20 +201,23 @@ function ControllerSlider(){
 
     state.num_show = val;
   }
-
-  this.test = () => {
-    Utility.cloneSlide();
-    Utility.removeClones();
-  }
 }
 
+// IIFE is used to keep the slider instance in a closed scope.
 (() => {
   const AffiliatesSlider = new ControllerSlider();
+  let last_width = document.getElementsByTagName("body")[0].getBoundingClientRect().width;
 
-  window.addEventListener("load", () => {
-    AffiliatesSlider.start();
-  })
+  // Start the slider.
+  AffiliatesSlider.start();
+
+  // Used by resize event to calculate slider views.
   window.addEventListener("resize", () => {
-    AffiliatesSlider.reboot(3);
+    let { width } = document.getElementsByTagName("body")[0].getBoundingClientRect().width;
+
+    if(width !== last_width){
+      AffiliatesSlider.reboot();
+      last_width = width;
+    }
   })
 })()
