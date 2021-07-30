@@ -7,31 +7,42 @@ const options_itemSublist = document.getElementById("options_itemSublist");
 const CLASS_OPEN = "open_menu";
 const CLASS_CLOSE = "close_menu";
 
-function header_menuController(){
-  if(!landing_header.classList.contains(CLASS_OPEN)){
-    landing_header.classList.add(CLASS_OPEN);
-    document.getElementsByTagName("body")[0].style.overflow = "hidden";
-    /*document.getElementsByTagName("body")[0].style.position = "fixed";*/
-  }else{
-    landing_header.classList.add(CLASS_CLOSE);
-    header_container.addEventListener("animationend", header_closeMenu);
+(() => {
+  let last_width = document.getElementsByTagName("body")[0].getBoundingClientRect().width;
+
+
+  function header_menuController(){
+    if(!landing_header.classList.contains(CLASS_OPEN)){
+      landing_header.classList.add(CLASS_OPEN);
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
+      /*document.getElementsByTagName("body")[0].style.position = "fixed";*/
+    }else{
+      landing_header.classList.add(CLASS_CLOSE);
+      header_container.addEventListener("animationend", header_closeMenu);
+    }
   }
-}
 
-function header_closeMenu(){
-  landing_header.classList.remove(CLASS_OPEN);
-  landing_header.classList.remove(CLASS_CLOSE);
-  /*options_itemSublist.classList.remove("open_sublist");*/
+  function header_closeMenu(){
+    let { width } = document.getElementsByTagName("body")[0].getBoundingClientRect().width;
 
-  header_container.removeEventListener("animationend", header_closeMenu);
-  document.getElementsByTagName("body")[0].style.overflow = "initial";
-  document.getElementsByTagName("body")[0].style.position = "initial";
-}
+    options_itemSublist.classList.remove("open_sublist");
 
-header_openMenu.addEventListener("click", header_menuController);
-window.addEventListener('resize', header_closeMenu);
+    if(width !== last_width){
+      landing_header.classList.remove(CLASS_OPEN);
+      landing_header.classList.remove(CLASS_CLOSE);
+      options_itemSublist.classList.remove("open_sublist");
 
-/*options_itemSublist.addEventListener("click", () => {
-  options_itemSublist.classList.toggle("open_sublist");
-})*/
+      header_container.removeEventListener("animationend", header_closeMenu);
+    }
+    document.getElementsByTagName("body")[0].style.overflow = "initial";
+    /*document.getElementsByTagName("body")[0].style.position = "initial";*/
+  }
 
+  header_openMenu.addEventListener("click", header_menuController);
+  window.addEventListener('resize', header_closeMenu);
+
+
+  options_itemSublist.addEventListener("click", () => {
+    options_itemSublist.classList.toggle("open_sublist");
+  })
+})()

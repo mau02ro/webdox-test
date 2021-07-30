@@ -192,7 +192,7 @@
 	.header_container {
 		position: fixed;
 		top: 114px;
-		bottom: -40px;
+		bottom: -60px;
 		left: 0;
 		right: 0;
 		background-color: var(--purple);
@@ -245,7 +245,7 @@
 	}
 	/* Open Menu */
 	.open_menu {
-		background: rgb(236, 232, 14) !important;
+		background: rgb(255, 166, 0) !important;
 	}
 
 	.open_menu .logo_w {
