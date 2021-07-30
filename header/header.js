@@ -55,16 +55,14 @@ function header_closeSubList(){
     item.removeEventListener("click", header_closeSubList);
   })
 
-    window.removeEventListener("click", header_subListWindow);
+  window.removeEventListener("click", header_subListWindow);  
 }
 function header_subListWindow({clientX, clientY}){
   let list = options_subList.getBoundingClientRect();
   let title = options_titleSublist.getBoundingClientRect();
-  debugger;
-  if(
-    (clientY < title.top && clientY > list.bottom) 
-    && (clientX < title.left && clientX > list.right)){
 
+  if((clientY < title.top || clientY > list.bottom) 
+    || (clientX < title.left || clientX > list.right)){
     header_closeSubList();
   }
 }
