@@ -11,7 +11,6 @@ function header_menuController(){
   if(!landing_header.classList.contains(CLASS_OPEN)){
     landing_header.classList.add(CLASS_OPEN);
     document.getElementsByTagName("body")[0].style.overflow = "hidden";
-    landing_header.parentNode.style.paddingTop = '164px';
     /*document.getElementsByTagName("body")[0].style.position = "fixed";*/
   }else{
     landing_header.classList.add(CLASS_CLOSE);
@@ -23,7 +22,6 @@ function header_closeMenu(){
   landing_header.classList.remove(CLASS_OPEN);
   landing_header.classList.remove(CLASS_CLOSE);
   /*options_itemSublist.classList.remove("open_sublist");*/
-  landing_header.parentNode.style.paddingTop = '0px';
 
   header_container.removeEventListener("animationend", header_closeMenu);
   document.getElementsByTagName("body")[0].style.overflow = "initial";
