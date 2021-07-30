@@ -245,9 +245,10 @@
 	}
 	/* Open Menu */
 	.open_menu {
-		position: sticky;
+		position: fixed !important;
 		top: 0;
-		background: red !important;
+		background: rgb(32, 236, 14) !important;
+		z-index: 1;
 	}
 
 	.open_menu .logo_w {
