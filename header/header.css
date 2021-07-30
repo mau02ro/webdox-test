@@ -198,6 +198,7 @@
 		padding: 16px 26px;
 		display: none;
 		flex-flow: column;
+		z-index: 2;
 	}
 
 	/* header_menu */
