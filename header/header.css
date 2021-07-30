@@ -244,6 +244,10 @@
 		transform: translateY(0);
 	}
 	/* Open Menu */
+	.open_menu {
+		position: sticky;
+		top: 0;
+	}
 	.open_menu .logo_w {
 		left: 0;
 		margin-left: 0;
