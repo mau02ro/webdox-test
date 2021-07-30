@@ -50,6 +50,9 @@
 }
 
 /* header_options */
+.icon_keyPurple {
+	display: none;
+}
 .header_options {
 	position: absolute;
 	top: 0;
@@ -213,6 +216,12 @@
 	}
 
 	/* header_options */
+	.icon_keyPurple {
+		display: inline-block;
+	}
+	.icon_key {
+		display: none;
+	}
 	.header_options {
 		top: initial;
 		bottom: 50px;
