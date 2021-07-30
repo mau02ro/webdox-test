@@ -60,6 +60,9 @@
 	justify-content: flex-end;
 	background-color: #000000;
 }
+.header_options * {
+	user-select: none;
+}
 .options_list {
 	display: flex;
 	align-items: center;
