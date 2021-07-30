@@ -1,9 +1,10 @@
 const slider = document.getElementById("affiliatesSlider");
 const slider_container = document.getElementById("affiliatesSlider_container");
 
+// Settings define slider behavior.
 const CONFIG_SLIDER = {
-  num_show: 6,
-  time: 3000,
+  num_show: 6, // Tndicates how many slides will be displayed.
+  time: 3000, // Slider speed(ms).
   breakingPoints: [
     {
       size: 768,
@@ -16,7 +17,10 @@ const CONFIG_SLIDER = {
   ]
 }
 
+// -------------------------------------------------------------------
+// Utilities to manipulate the slider.
 function Utilities(state){
+  // Set the width of each item on the slider.
   this.setWidth = () => {
     let items_slide = document.querySelectorAll(".slide");
     let width_slider = slider.getBoundingClientRect().width;
@@ -29,6 +33,13 @@ function Utilities(state){
     })
   }
 
+  /*
+  Due to the operation of the slider, we have to clone a number of items,
+  these functions respectively are in charge of handling this functionality.
+  
+    - cloneSlide: Clone the slides.
+    - removeClones: Remove cloned items.
+  */
   this.cloneSlide = () => {
     let items_slide = document.querySelectorAll(".slide");
 
@@ -49,6 +60,7 @@ function Utilities(state){
     }
   }
 
+  // Calculates slider skip or shift.
   this.calculateJump = () => {
     let position_slider = slider_container.getBoundingClientRect().x;  
     let offset_size = position_slider;
@@ -62,10 +74,12 @@ function Utilities(state){
     return position_slider - (offset_size + state.jump_space);
   }
 
+  // This method moves the slider.
   this.moveSlider = (jump) => {
     slider_container.style.transform = `translateX(${jump}px)`;
   }
 
+  // Set the speed of slider transitions.
   this.setTransition = (indicator) => {
     if(indicator){
       slider_container.style.transition = "transform 2s";
@@ -75,6 +89,13 @@ function Utilities(state){
   }
 }
 
+// -------------------------------------------------------------------
+// "setInterval" controls.
+/*
+This function is in charge of managing the start, stop and restart of
+the interval, the function that is received as a parameter, the one
+that will be executed in each interval.
+*/
 function ControllerInterval(fn){
   let timer = null;
 
@@ -99,13 +120,16 @@ function ControllerInterval(fn){
   }
 }
 
+// -------------------------------------------------------------------
+// This function is the main controller of the slider.
 function ControllerSlider(){
+  // Local state.
   const state = {
-    margin: slider_container.getBoundingClientRect().x, // Design margin (window - slider)
-    hop_counter: 0, // Hop counter
-    jump_space: 0, // Jump space
+    margin: slider_container.getBoundingClientRect().x, // Design margin (window - slider).
+    hop_counter: 0, // Hop counter.
+    jump_space: 0, // Jump space.
     initNum_slide: slider_container.children.length, // Initial number of slide,
-    num_show: CONFIG_SLIDER.num_show
+    num_show: CONFIG_SLIDER.num_show, // Tndicates how many slides will be displayed.
   }
 
   const Utility = new Utilities(state);
