@@ -247,6 +247,7 @@
 	.open_menu {
 		position: sticky;
 		top: 0;
+		background: red;
 	}
 	.open_menu .logo_w {
 		left: 0;
