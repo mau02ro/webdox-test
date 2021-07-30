@@ -22,12 +22,13 @@ function header_menuController(){
   }
 }
 function header_closeMenu(){
+  document.getElementsByTagName("body")[0].style.overflow = "initial";
+  document.getElementsByTagName("body")[0].style.position = "initial";
+
   landing_header.classList.remove(CLASS_OPEN);
   landing_header.classList.remove(CLASS_CLOSE);
 
-  header_container.removeEventListener("animationend", header_closeMenu);
-  document.getElementsByTagName("body")[0].style.overflow = "initial";
-  document.getElementsByTagName("body")[0].style.position = "initial";
+  header_container.removeEventListener("animationend", header_closeMenu);  
 }
 
 // ---------------------------------------
@@ -71,7 +72,7 @@ header_openMenu.addEventListener("click", header_menuController);
 options_titleSublist.addEventListener("click", header_openSubList);
 
 window.addEventListener('resize', () => {
-  header_openSubList();
+  header_closeMenu();
   header_closeSubList();
 });
 
